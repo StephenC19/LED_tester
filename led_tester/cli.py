@@ -8,6 +8,7 @@ from led_tester import LightTester
 from led_tester import cli
 
 
+
 def main(args=None):
     """Console script for led_tester."""
     thing = LightTester(10)

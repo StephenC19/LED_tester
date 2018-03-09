@@ -20,7 +20,7 @@ A program to turn on/off LEDs within a given range and count the final amount fo
 
 
 * Free software: GNU General Public License v3
-* Documentation: https://led-tester.readthedocs.io.
+
 
 
 Features
