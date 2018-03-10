@@ -4,8 +4,7 @@
 
 import sys
 sys.path.append('.')
-from led_tester import LightTester
-from led_tester import cli
+from led_tester import led_tester
 
 
 
