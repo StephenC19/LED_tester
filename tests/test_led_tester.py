@@ -5,14 +5,17 @@
 
 import sys
 sys.path.append(".")
-#from click.testing import CliRunner
 
 from led_tester import led_tester
 from led_tester import cli
-
-
-
-
-def test_inputs():
+    
+    
+def test_file():
+    fileName = './test_files/input_assign3_d.txt'
+    file = open(fileName, 'r')
+    assert file is not None
+    
+def test_count():
     led = led_tester.LightTester(10)
-    assert led.count() == 0
+    led.apply(0,10,0,10)
+    assert led.count() == 100
