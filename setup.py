@@ -37,7 +37,7 @@ setup(
     packages=find_packages(include=['led_tester']),
     entry_points={
         'console_scripts': [
-            'led_tester=led_tester.cli:main',
+            'solve_led=led_tester.cli:main',
         ],
     },
     include_package_data=True,

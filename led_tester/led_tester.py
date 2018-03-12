@@ -9,7 +9,7 @@ class LightTester:
     def __init__(self,N):
         self.lights = [[False]*N for _ in range(0,N)]
 
-    def apply(self, cmd):
+    def apply(self, cmd, N):
         pat = re.compile(".*(turn on|turn off|switch)\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*through\s*([+-]?\d+)\s*,\s*([+-]?\d+).*")
         res = re.findall(pat, cmd)
 
@@ -21,11 +21,24 @@ class LightTester:
                 x1, x2 = x2, x1
             if y1 > y2:
                 y1, y2 = y2, y1
-            coOrds = [x1, x2, y1, y2]
-            for i in range(0,len(coOrds)):
-                if coOrds[i] < 0:
-                    coOrds[i] = 0
+           
             
+            if x1 < 0:
+                x1 = 0
+            elif x1 > int(N):
+                x1 = int(N)
+            if x2 < 0:
+                x2 = 0
+            elif x2 > int(N):
+                x2 = int(N)
+            if y1 < 0:
+                y1 = 0
+            elif y1 > int(N):
+                y1 = int(N)
+            if y2 < 0:
+                y2 = 0
+            elif y2 > int(N):
+                y2 = int(N)
         
         
             if res[0][0] == "turn on":
@@ -57,7 +70,6 @@ class LightTester:
     
     
 def parseFile(inputFile):
-    
     file = open(inputFile, 'r')
     instructions = file.readlines()
     size = instructions[0]   

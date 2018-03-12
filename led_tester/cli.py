@@ -4,23 +4,21 @@
 
 import sys
 sys.path.append('.')
-import led_tester
+from led_tester import led_tester
+import click
 
 
+@click.command()
+@click.option("--input", default=None, help="input the url of instuction file (local or online)")
 
-def main(fileName):
-    size, commands = led_tester.parseFile(fileName)
-    
+def main(input):
+    size, commands = led_tester.parseFile(input)
     leds = led_tester.LightTester(int(size))
     for i in commands:
-        leds.apply(i)
-    print(leds.count())
+        leds.apply(i, size)
+    print("Leds turned on: ",leds.count())
 
 
-testData = '../test_files/input_assign3_d.txt'
-main(testData)
 
-
-#if __name__ == "__main__":
- #   import sys
-#    sys.exit(main())
+if __name__ == "__main__":
+    sys.exit(main())
