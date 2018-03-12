@@ -1,11 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for `led_tester` package."""
+"""
+Tests for `led_tester` package.
+- Test file input
+- Test counting function 
+- Test main method (local file)
+- Test coordinates outside grid
+- Test file from url
+"""
 
 import sys
 sys.path.append(".")
-
 from led_tester import led_tester
 from led_tester import cli
     
@@ -31,4 +37,9 @@ def test_outside_grid():
     led = led_tester.LightTester(grid)
     led.apply('turn on 0,0 through 100,12', grid)
     assert led.count() == 100
+    
+def test_url_file():
+    file = 'http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3.txt'
+    result = cli.main(file)
+    assert result == 398967
     

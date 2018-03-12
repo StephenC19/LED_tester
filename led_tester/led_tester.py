@@ -1,7 +1,17 @@
 # -*- coding: utf-8 -*-
 
-"""Main module."""
+"""
+LightTester Object
+------------------
+Defines the LED board object with functions to turn on/off
+ranges of LEDs and count the amount left on. 
+
+Also defines a function to parse the input file to separate
+the appropriate instructions for controlling the LED board.
+"""
+
 import re
+import requests
 
 class LightTester:
     
@@ -9,6 +19,7 @@ class LightTester:
     def __init__(self,N):
         self.lights = [[False]*N for _ in range(0,N)]
 
+    "Function to control the LEDs on the board"
     def apply(self, cmd, N):
         pat = re.compile(".*(turn on|turn off|switch)\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*through\s*([+-]?\d+)\s*,\s*([+-]?\d+).*")
         res = re.findall(pat, cmd)
@@ -22,7 +33,7 @@ class LightTester:
             if y1 > y2:
                 y1, y2 = y2, y1
            
-            
+            "Deals with out of range co-ordinates"
             if x1 < 0:
                 x1 = 0
             elif x1 > int(N):
@@ -69,10 +80,19 @@ class LightTester:
     
     
     
+"Function to separate correct arguments from an input file"
 def parseFile(inputFile):
-    file = open(inputFile, 'r')
-    instructions = file.readlines()
-    size = instructions[0]   
-    del instructions[0]
-    file.close()
+    
+    if inputFile.startswith('http'):
+        r = requests.get(inputFile).text
+        lines = r.splitlines()
+        size = lines[0]
+        instructions = lines[1:]
+    else:
+        file = open(inputFile, 'r')
+        instructions = file.readlines()
+        size = instructions[0]   
+        del instructions[0]
+        file.close()
+    
     return size, instructions

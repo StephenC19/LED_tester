@@ -12,7 +12,7 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'Click>=6.0',
+    'Click>=6.0', 'pytest==3.4.2','requests==2.18.4'
     # TODO: Put package requirements here
 ]
 

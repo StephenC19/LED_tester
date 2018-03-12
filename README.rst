@@ -13,20 +13,30 @@ LED_tester
         :target: https://led-tester.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-
-
-
-A program to turn on/off LEDs within a given range and count the final amount fo LEDs turned on.
-
-
 * Free software: GNU General Public License v3
-
 
 
 Features
 --------
+A program to turn on/off LEDs within a given range and count the final amount  LEDs turned on.
 
-* TODO
+
+Installation
+--------
+The files can be downloaded and installed using
+```
+$ git clone https://github.com/StephenC19/LED_tester.git
+$ cd led_tester
+$ python setup.py install
+```
+
+Run
+-----
+Once the setup file is installed the follwing command can be used
+with a local or online file.
+```
+solve_led --input http://claritytrec.ucd.ie/~alawlor/comp30670/←  input_assign3.txt
+```
 
 Credits
 -------

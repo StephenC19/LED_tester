@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Console script for led_tester."""
+"""Main module"""
 
 import sys
 sys.path.append('.')
@@ -9,14 +9,16 @@ import click
 
 
 @click.command()
-@click.option("--input", default=None, help="input the url of instuction file (local or online)")
+@click.option("--input", default=None, help="Input the url of instuction file (local or online)")
 
 def main(input):
     size, commands = led_tester.parseFile(input)
     leds = led_tester.LightTester(int(size))
     for i in commands:
         leds.apply(i, size)
-    print("Leds turned on: ",leds.count())
+    on_count = leds.count()
+    print("# occupied: ",on_count)
+    return on_count
 
 
 
