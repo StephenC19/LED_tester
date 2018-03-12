@@ -4,15 +4,23 @@
 
 import sys
 sys.path.append('.')
-from led_tester import led_tester
+import led_tester
 
 
 
-def main(args=None):
-    """Console script for led_tester."""
-    thing = LightTester(10)
-    print(thing.count())
+def main(fileName):
+    size, commands = led_tester.parseFile(fileName)
+    
+    leds = led_tester.LightTester(int(size))
+    for i in commands:
+        leds.apply(i)
+    print(leds.count())
 
-if __name__ == "__main__":
-    import sys
-    sys.exit(main())
+
+testData = '../test_files/input_assign3_d.txt'
+main(testData)
+
+
+#if __name__ == "__main__":
+ #   import sys
+#    sys.exit(main())
