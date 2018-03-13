@@ -18,25 +18,29 @@ LED_tester
 
 Features
 --------
-A program to turn on/off LEDs within a given range and count the final amount  LEDs turned on.
+A program to turn on/off LEDs within a given range and count the final amount LEDs turned on.
 
 
 Installation
 --------
 The files can be downloaded and installed using
-```
-$ git clone https://github.com/StephenC19/LED_tester.git
-$ cd led_tester
-$ python setup.py install
-```
+
+.. code-block:: console
+	$ git clone https://github.com/StephenC19/LED_tester.git
+
+	$ cd led_tester
+
+	$ python setup.py install
+
 
 Run
 -----
-Once the setup file is installed the follwing command can be used
+Once the setup file is installed the following command can be used
 with a local or online file.
-```
-solve_led --input http://claritytrec.ucd.ie/~alawlor/comp30670/←  input_assign3.txt
-```
+
+.. code-block:: console
+	$ solve_led --input http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3.txt
+
 
 Credits
 -------
